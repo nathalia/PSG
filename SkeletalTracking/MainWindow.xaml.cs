@@ -96,9 +96,9 @@ namespace SkeletalTracking
             }
 
             //set scaled position
-            ScalePosition(headEllipse, first.Joints[JointType.Head]);
-            ScalePosition(leftEllipse, first.Joints[JointType.HandLeft]);
-            ScalePosition(rightEllipse, first.Joints[JointType.HandRight]);
+            ScalePosition(head, first.Joints[JointType.Head]);
+            ScalePosition(leftHand, first.Joints[JointType.HandLeft]);
+            ScalePosition(rightHand, first.Joints[JointType.HandRight]);
             ScalePosition(rightShoulder, first.Joints[JointType.ShoulderRight]);
             ScalePosition(leftShoulder, first.Joints[JointType.ShoulderLeft]);
 
