@@ -123,12 +123,35 @@ namespace SkeletalTracking
                 DepthImagePoint headDepthPoint =
                     depth.MapFromSkeletonPoint(first.Joints[JointType.Head].Position);
                 //left hand
-                DepthImagePoint leftDepthPoint =
+                DepthImagePoint leftHandDepthPoint =
                     depth.MapFromSkeletonPoint(first.Joints[JointType.HandLeft].Position);
                 //right hand
-                DepthImagePoint rightDepthPoint =
+                DepthImagePoint rightHandDepthPoint =
                     depth.MapFromSkeletonPoint(first.Joints[JointType.HandRight].Position);
-
+                //left shoulder
+                DepthImagePoint leftShoulderDepthPoint =
+                    depth.MapFromSkeletonPoint(first.Joints[JointType.ShoulderLeft].Position);
+                //right shoulder
+                DepthImagePoint rightShoulderDepthPoint =
+                    depth.MapFromSkeletonPoint(first.Joints[JointType.ShoulderRight].Position);
+                //left elbow
+                DepthImagePoint leftElbowDepthPoint =
+                    depth.MapFromSkeletonPoint(first.Joints[JointType.ElbowLeft].Position);
+                //right elbow
+                DepthImagePoint rightElbowDepthPoint =
+                    depth.MapFromSkeletonPoint(first.Joints[JointType.ElbowRight].Position);
+                //left trocanter
+                DepthImagePoint leftTrocanterDepthPoint =
+                    depth.MapFromSkeletonPoint(first.Joints[JointType.HipLeft].Position);
+                //right trocanter
+                DepthImagePoint rightTrocanterDepthPoint =
+                    depth.MapFromSkeletonPoint(first.Joints[JointType.HipRight].Position);
+                //left maleolo
+                DepthImagePoint leftMaleoloDepthPoint =
+                    depth.MapFromSkeletonPoint(first.Joints[JointType.FootLeft].Position);
+                //right maleolo
+                DepthImagePoint rightMaleoloDepthPoint =
+                    depth.MapFromSkeletonPoint(first.Joints[JointType.FootRight].Position);
 
                 //Map a depth point to a point on the color image
                 //head
@@ -136,19 +159,60 @@ namespace SkeletalTracking
                     depth.MapToColorImagePoint(headDepthPoint.X, headDepthPoint.Y,
                     ColorImageFormat.RgbResolution640x480Fps30);
                 //left hand
-                ColorImagePoint leftColorPoint =
-                    depth.MapToColorImagePoint(leftDepthPoint.X, leftDepthPoint.Y,
+                ColorImagePoint leftHandColorPoint =
+                    depth.MapToColorImagePoint(leftHandDepthPoint.X, leftHandDepthPoint.Y,
                     ColorImageFormat.RgbResolution640x480Fps30);
                 //right hand
-                ColorImagePoint rightColorPoint =
-                    depth.MapToColorImagePoint(rightDepthPoint.X, rightDepthPoint.Y,
+                ColorImagePoint rightHandColorPoint =
+                    depth.MapToColorImagePoint(rightHandDepthPoint.X, rightHandDepthPoint.Y,
                     ColorImageFormat.RgbResolution640x480Fps30);
 
+                //left shoulder
+                ColorImagePoint leftShoulderColorPoint =
+                    depth.MapToColorImagePoint(leftShoulderDepthPoint.X, leftShoulderDepthPoint.Y,
+                    ColorImageFormat.RgbResolution640x480Fps30);
+                //right shoulder
+                ColorImagePoint rightShoulderColorPoint =
+                    depth.MapToColorImagePoint(rightShoulderDepthPoint.X, rightShoulderDepthPoint.Y,
+                    ColorImageFormat.RgbResolution640x480Fps30);
+
+                //left elbow
+                ColorImagePoint leftElbowColorPoint =
+                    depth.MapToColorImagePoint(leftElbowDepthPoint.X, leftElbowDepthPoint.Y,
+                    ColorImageFormat.RgbResolution640x480Fps30);
+                //right elbow
+                ColorImagePoint rightElbowColorPoint =
+                    depth.MapToColorImagePoint(rightElbowDepthPoint.X, rightElbowDepthPoint.Y,
+                    ColorImageFormat.RgbResolution640x480Fps30);
+                //left trocanter
+                ColorImagePoint leftTrocanterColorPoint =
+                    depth.MapToColorImagePoint(leftTrocanterDepthPoint.X, leftTrocanterDepthPoint.Y,
+                    ColorImageFormat.RgbResolution640x480Fps30);
+                //right trocanter
+                ColorImagePoint rightTrocanterColorPoint =
+                    depth.MapToColorImagePoint(rightTrocanterDepthPoint.X, rightTrocanterDepthPoint.Y,
+                    ColorImageFormat.RgbResolution640x480Fps30);
+                //left maleolo
+                ColorImagePoint leftMaleoloColorPoint =
+                    depth.MapToColorImagePoint(leftMaleoloDepthPoint.X, leftMaleoloDepthPoint.Y,
+                    ColorImageFormat.RgbResolution640x480Fps30);
+                //right maleolo
+                ColorImagePoint rightMaleoloColorPoint =
+                    depth.MapToColorImagePoint(rightMaleoloDepthPoint.X, rightMaleoloDepthPoint.Y,
+                    ColorImageFormat.RgbResolution640x480Fps30);
 
                 //Set location
-                CameraPosition(headEllipse, headColorPoint);
-                CameraPosition(leftEllipse, leftColorPoint);
-                CameraPosition(rightEllipse, rightColorPoint);
+                CameraPosition(head, headColorPoint);
+                CameraPosition(leftHand, leftHandColorPoint);
+                CameraPosition(rightHand, rightHandColorPoint);
+                CameraPosition(rightShoulder, rightShoulderColorPoint);
+                CameraPosition(leftShoulder, leftShoulderColorPoint);
+                CameraPosition(rightElbow, rightElbowColorPoint);
+                CameraPosition(leftElbow, leftElbowColorPoint);
+                CameraPosition(rightTrocanter, rightTrocanterColorPoint);
+                CameraPosition(leftTrocanter, leftTrocanterColorPoint);
+                CameraPosition(rightMaleolo, rightMaleoloColorPoint);
+                CameraPosition(leftMaleolo, leftMaleoloColorPoint);
             }        
         }
 
