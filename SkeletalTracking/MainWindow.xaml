@@ -17,7 +17,13 @@
         <Ellipse Canvas.Left="282" Canvas.Top="67" Fill="#FF9393A7" Height="18" Name="leftElbow" Opacity="1" Stroke="White" Width="18" />
         <Ellipse Canvas.Left="190" Canvas.Top="130" Fill="#FF2CACE3" Height="18" Name="rightTrocanter" Opacity="1" Stroke="White" Width="18" />
         <Ellipse Canvas.Left="264" Canvas.Top="130" Fill="#FF2CACE3" Height="18" Name="leftTrocanter" Opacity="1" Stroke="White" Width="18" />
-        <Ellipse Canvas.Left="161" Canvas.Top="220" Fill="#FF0E376C" Height="18" Name="rightMaleolo" Opacity="1" Stroke="White" Width="18" />
-        <Ellipse Canvas.Left="282" Canvas.Top="220" Fill="#FF0E376C" Height="18" Name="leftMaleolo" Opacity="1" Stroke="White" Width="18" />
+        <Ellipse Canvas.Left="161" Canvas.Top="266" Fill="#FF0E376C" Height="18" Name="rightMaleolo" Opacity="1" Stroke="White" Width="18" />
+        <Ellipse Canvas.Left="282" Canvas.Top="266" Fill="#FF0E376C" Height="18" Name="leftMaleolo" Opacity="1" Stroke="White" Width="18" />
+        <Ellipse Canvas.Left="161" Canvas.Top="0" Fill="#FF4DFF00" Height="18" Name="rightPavilhao" Opacity="1" Stroke="White" Width="18" />
+        <Ellipse Canvas.Left="282" Canvas.Top="0" Fill="#FF4DFF00" Height="18" Name="leftPavilhao" Opacity="1" Stroke="White" Width="18" />
+        <Ellipse Canvas.Left="226" Canvas.Top="49" Fill="#FFFAFF00" Height="18" Name="apofises" Opacity="1" Stroke="White" Width="18" />
+        <Ellipse Canvas.Left="226" Canvas.Top="96" Fill="#FFFAFF00" Height="18" Name="crista" Opacity="1" Stroke="White" Width="18" />
+        <Ellipse Canvas.Left="161" Canvas.Top="210" Fill="#FFEB0E6C" Height="18" Name="rightKnee" Opacity="1" Stroke="White" Width="18" />
+        <Ellipse Canvas.Left="282" Canvas.Top="210" Fill="#FFEB0E6C" Height="18" Name="leftKnee" Opacity="1" Stroke="White" Width="18" />
     </Canvas>
 </Window>

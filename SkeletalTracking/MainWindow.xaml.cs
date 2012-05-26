@@ -96,11 +96,11 @@ namespace SkeletalTracking
             }
 
             //set scaled position
-            ScalePosition(head, first.Joints[JointType.Head]);
-            ScalePosition(leftHand, first.Joints[JointType.HandLeft]);
-            ScalePosition(rightHand, first.Joints[JointType.HandRight]);
-            ScalePosition(rightShoulder, first.Joints[JointType.ShoulderRight]);
-            ScalePosition(leftShoulder, first.Joints[JointType.ShoulderLeft]);
+            //ScalePosition(head, first.Joints[JointType.Head]);
+            //ScalePosition(leftHand, first.Joints[JointType.HandLeft]);
+            //ScalePosition(rightHand, first.Joints[JointType.HandRight]);
+            //ScalePosition(rightShoulder, first.Joints[JointType.ShoulderRight]);
+            //ScalePosition(leftShoulder, first.Joints[JointType.ShoulderLeft]);
 
             GetCameraPoint(first, e); 
 
@@ -146,12 +146,25 @@ namespace SkeletalTracking
                 //right trocanter
                 DepthImagePoint rightTrocanterDepthPoint =
                     depth.MapFromSkeletonPoint(first.Joints[JointType.HipRight].Position);
+                //left knee
+                DepthImagePoint leftKneeDepthPoint =
+                    depth.MapFromSkeletonPoint(first.Joints[JointType.KneeRight].Position);
+                //right knee
+                DepthImagePoint rightKneeDepthPoint =
+                    depth.MapFromSkeletonPoint(first.Joints[JointType.KneeLeft].Position);
                 //left maleolo
                 DepthImagePoint leftMaleoloDepthPoint =
                     depth.MapFromSkeletonPoint(first.Joints[JointType.FootLeft].Position);
                 //right maleolo
                 DepthImagePoint rightMaleoloDepthPoint =
                     depth.MapFromSkeletonPoint(first.Joints[JointType.FootRight].Position);
+                //apofises
+                DepthImagePoint apofisesDepthPoint =
+                    depth.MapFromSkeletonPoint(first.Joints[JointType.Spine].Position);
+                //crista
+                DepthImagePoint cristaDepthPoint =
+                    depth.MapFromSkeletonPoint(first.Joints[JointType.HipCenter].Position);
+
 
                 //Map a depth point to a point on the color image
                 //head
@@ -192,6 +205,14 @@ namespace SkeletalTracking
                 ColorImagePoint rightTrocanterColorPoint =
                     depth.MapToColorImagePoint(rightTrocanterDepthPoint.X, rightTrocanterDepthPoint.Y,
                     ColorImageFormat.RgbResolution640x480Fps30);
+                //left knee
+                ColorImagePoint leftKneeColorPoint =
+                    depth.MapToColorImagePoint(leftKneeDepthPoint.X, leftTrocanterDepthPoint.Y,
+                    ColorImageFormat.RgbResolution640x480Fps30);
+                //right knee
+                ColorImagePoint rightKneeColorPoint =
+                    depth.MapToColorImagePoint(rightKneeDepthPoint.X, rightTrocanterDepthPoint.Y,
+                    ColorImageFormat.RgbResolution640x480Fps30);
                 //left maleolo
                 ColorImagePoint leftMaleoloColorPoint =
                     depth.MapToColorImagePoint(leftMaleoloDepthPoint.X, leftMaleoloDepthPoint.Y,
@@ -200,19 +221,33 @@ namespace SkeletalTracking
                 ColorImagePoint rightMaleoloColorPoint =
                     depth.MapToColorImagePoint(rightMaleoloDepthPoint.X, rightMaleoloDepthPoint.Y,
                     ColorImageFormat.RgbResolution640x480Fps30);
+                //apofises
+                ColorImagePoint apofisesColorPoint =
+                    depth.MapToColorImagePoint(apofisesDepthPoint.X, apofisesDepthPoint.Y,
+                    ColorImageFormat.RgbResolution640x480Fps30);
+                //crista
+                ColorImagePoint cristaColorPoint =
+                    depth.MapToColorImagePoint(cristaDepthPoint.X, cristaDepthPoint.Y,
+                    ColorImageFormat.RgbResolution640x480Fps30);
 
                 //Set location
-                CameraPosition(head, headColorPoint);
-                CameraPosition(leftHand, leftHandColorPoint);
-                CameraPosition(rightHand, rightHandColorPoint);
-                CameraPosition(rightShoulder, rightShoulderColorPoint);
-                CameraPosition(leftShoulder, leftShoulderColorPoint);
-                CameraPosition(rightElbow, rightElbowColorPoint);
-                CameraPosition(leftElbow, leftElbowColorPoint);
-                CameraPosition(rightTrocanter, rightTrocanterColorPoint);
-                CameraPosition(leftTrocanter, leftTrocanterColorPoint);
-                CameraPosition(rightMaleolo, rightMaleoloColorPoint);
-                CameraPosition(leftMaleolo, leftMaleoloColorPoint);
+                CameraPosition(head, headColorPoint, 0, 0);
+                CameraPosition(rightPavilhao, headColorPoint, -30, 0);
+                CameraPosition(leftPavilhao, headColorPoint, 30, 0);
+                CameraPosition(leftHand, leftHandColorPoint, 0, 0);
+                CameraPosition(rightHand, rightHandColorPoint, 0, 0);
+                CameraPosition(rightShoulder, rightShoulderColorPoint, 0, 0);
+                CameraPosition(leftShoulder, leftShoulderColorPoint, 0, 0);
+                CameraPosition(rightElbow, rightElbowColorPoint, 0, 0);
+                CameraPosition(leftElbow, leftElbowColorPoint, 0, 0);
+                CameraPosition(rightTrocanter, rightTrocanterColorPoint, 0, 0);
+                CameraPosition(leftTrocanter, leftTrocanterColorPoint, 0, 0);
+                CameraPosition(rightKnee, rightKneeColorPoint, 0, 0);
+                CameraPosition(leftKnee, leftKneeColorPoint, 0, 0);
+                CameraPosition(rightMaleolo, rightMaleoloColorPoint, 0, 0);
+                CameraPosition(leftMaleolo, leftMaleoloColorPoint, 0, 0);
+                CameraPosition(apofises, apofisesColorPoint, 0, 0);
+                CameraPosition(crista, cristaColorPoint, 0, 0);
             }        
         }
 
@@ -259,12 +294,12 @@ namespace SkeletalTracking
             }
         }
 
-        private void CameraPosition(FrameworkElement element, ColorImagePoint point)
+        private void CameraPosition(FrameworkElement element, ColorImagePoint point, int correcaoX, int correcaoY)
         {
             //Divide by 2 for width and height so point is right in the middle 
             // instead of in top/left corner
-            Canvas.SetLeft(element, point.X - element.Width / 2);
-            Canvas.SetTop(element, point.Y - element.Height / 2);
+            Canvas.SetLeft(element, point.X - element.Width / 2 + correcaoX);
+            Canvas.SetTop(element, point.Y - element.Height / 2 + correcaoY);
 
         }
 
